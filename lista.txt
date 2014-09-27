@@ -1,9 +1,13 @@
 Hutyra Artur
+<<<<<<< HEAD
 Andrzej Lajczak
 Wandzel	Piotr
 Siemienik Pawel
 Wanot Szymon
 Micha³ Lajczak
+=======
+Micha³ £ajczak
+>>>>>>> 4de7daee3b0498214074d020362d885f1f8e22b1
 Wandzel	Kamil
 Siemienik Józef
 Wanot Piotr
