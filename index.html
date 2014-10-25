@@ -46,7 +46,12 @@
      
 <div ng-controller="ExampleController" class="ng-scope">
     
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Tutaj wpisz liczbe">
+
+<!--tutaj jest angular-->
+    
+            <input type="text" class="form-control" name="input" id="exampleInputEmail1" ng-model="text" ng-pattern="/^\s*\w*\s*$/" required="" ng-trim="false" placeholder="Tutaj wpisz liczbe"
+            class="ng-valid-pattern ng-valid-parse ng-dirty ng-touched ng-invalid ng-invalid-required">
+    
     </div>
             
         <center>
@@ -60,6 +65,7 @@
 
              <center>        
         <label for="exampleInputEmail1">Wynik</label>
+                 
         <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Tutaj otrzymasz wynik">
                 
  
