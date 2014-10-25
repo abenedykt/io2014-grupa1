@@ -1,0 +1,38 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">Fizz Buzz</div>
+    <div class="panel-body panel-background" ng-controller="GameController">
+        <form class="form-group" >
+            <input type="text" ng-model="inp" class="form-control"/>    
+            <button class="btn btn-primary" ng-click="check(inp)"> Check </button>
+        </form>
+        <h2>{{text}}</h2>
+    </div>
+</div>
+
+var myApp = angular.module('myApp',[]);
+
+function GameController($scope) {
+    $scope.text ="";
+    
+    $scope.check = function(inp){
+           if(inp % 5 === 0 && inp % 3 === 0)
+               $scope.text = "FizzBuzz";
+           else if(inp % 5 === 0)
+               $scope.text = "Buzz";
+           else if(inp % 3 === 0)
+               $scope.text = "Fizz";
+            else
+                $scope.text = inp;
+    }
+    
+}
+
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css');
+
+body {
+    margin: 10px;
+}
+
+.panel-background{
+    background-color:#419397;
+}
