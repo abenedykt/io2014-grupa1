@@ -1,4 +1,4 @@
-Hutyra Artur
+﻿Hutyra Artur
 Michał Łajczak
 Wandzel	Piotr
 Siemienik Paweł
@@ -7,3 +7,4 @@ Artur Baraszkiewicz
 Grzegorz Tomiak
 Damian Krysta
 Michał Konieczny
+Dominik Kawczak
