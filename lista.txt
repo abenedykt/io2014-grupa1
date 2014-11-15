@@ -1,18 +1,10 @@
-Hutyra Artur
-<<<<<<< HEAD
-Andrzej Lajczak
+ÔªøHutyra Artur
+Micha≈Ç ≈Åajczak
 Wandzel	Piotr
-Siemienik Pawel
+Siemienik Pawe≈Ç
 Wanot Szymon
-Micha≥ Lajczak
-=======
-Micha≥ £ajczak
->>>>>>> 4de7daee3b0498214074d020362d885f1f8e22b1
-Wandzel	Kamil
-Siemienik JÛzef
-Wanot Piotr
 Artur Baraszkiewicz
-Jan Tomiak
-Damian Krysta
 Grzegorz Tomiak
-Wies≥aw Krysta
+Damian Krysta
+Micha≈Ç Konieczny
+Dominik Kawczak
