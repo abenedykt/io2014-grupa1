@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<InfoWarnings>
+  <Info>Begin full analysis with NDepend v5.4.1.8430</Info>
+  <Info>No Baseline for Comparison loaded.</Info>
+  <Warning>Can't load the assembly {Microsoft.VisualStudio.HostingProcess.Utilities.Sync}:
+Can't find the .NET assembly {Microsoft.VisualStudio.HostingProcess.Utilities.Sync} in specified folders. 
+Has it been compiled properly? 
+Is the NDepend project missing the containing folder of the .NET assembly?</Warning>
+  <Info>Concurrent mode</Info>
+  <Warning>The file name {NDependTest.vshost} of the assembly loaded from file {C:\Users\szwan_000\Documents\Visual Studio 2013\Projects\NDependTest\NDependTest\bin\Debug\NDependTest.vshost.exe} is not the same as the assembly name {vshost32} found in the assembly manifest. NDepend might consider this assembly as not found and won't likely find its PDB file and source files.</Warning>
+  <Warning>Source code info won't be available for the assembly {NDependTest.vshost}: Corresponding PDB file not found in any of the folder specified.
+PDB file production can be enabled in Visual Studio:  Project -&gt; Properties -&gt; Build -&gt; Advanced... -&gt; Debug Info = 'full' or 'pdb-only'</Warning>
+  <Info>.NET Assembly loaded from {C:\Windows\Microsoft.NET\Framework\v4.0.30319} 
+   mscorlib.dll   v4.0.0.0</Info>
+  <Warning>No application or third party assembly found in directory {C:\Windows\Microsoft.NET\Framework\v4.0.30319\WPF}</Warning>
+  <Info>.NET Assembly loaded from {C:\Users\szwan_000\Documents\Visual Studio 2013\Projects\NDependTest\Employee\bin\Debug} 
+   Employee.dll   v1.0.0.0</Info>
+  <Warning>No application or third party assembly found in directory {C:\Users\szwan_000\Documents\Visual Studio 2013\Projects\NDependTest\Employee\obj\Debug}</Warning>
+  <Info>.NET Assembly loaded from {C:\Users\szwan_000\Documents\Visual Studio 2013\Projects\NDependTest\Gui\bin\Debug} 
+   Gui.dll   v1.0.0.0</Info>
+  <Warning>No application or third party assembly found in directory {C:\Users\szwan_000\Documents\Visual Studio 2013\Projects\NDependTest\Gui\obj\Debug}</Warning>
+  <Info>.NET Assemblies loaded from {C:\Users\szwan_000\Documents\Visual Studio 2013\Projects\NDependTest\NDependTest\bin\Debug} 
+   NDependTest.vshost.exe   v12.0.0.0
+   NDependTest.exe   v1.0.0.0</Info>
+  <Warning>No application or third party assembly found in directory {C:\Users\szwan_000\Documents\Visual Studio 2013\Projects\NDependTest\NDependTest\obj\Debug}</Warning>
+  <Warning>Assembly {System.Core} is referenced by {Gui} but is not found.</Warning>
+  <Warning>Assembly {Microsoft.VisualStudio.HostingProcess.Utilities.Sync} is referenced by {NDependTest.vshost} but is not found.</Warning>
+  <Info>9 source files parsed ; all source files found ; all source files in-sync with PDB</Info>
+  <Info>0 code rule has been extracted from code.</Info>
+  <Info>No dependency cycle detected in assemblies referencement graph.</Info>
+  <Info>11-24-2014 19:07:53 Analyse dependencies of your application.</Info>
+  <Info>11-24-2014 19:07:53 Execute queries and rules</Info>
+  <Warning>1 critical rule is violated.
+  - Potentially dead Methods</Warning>
+  <Info>11-24-2014 19:07:54 NDepend analysis done. Duration: 00:01</Info>
+  <Info>11-24-2014 19:07:54 Building the report (standard).</Info>
+</InfoWarnings>
