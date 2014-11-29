@@ -46,19 +46,18 @@
     <Compile Include="Contract\IItem.cs" />
     <Compile Include="Contract\IOrder.cs" />
     <Compile Include="Contract\IVat.cs" />
+    <Compile Include="Model\Deliveries\DPDDelivery.cs" />
+    <Compile Include="Model\Discounts\FirstDiscount.cs" />
+    <Compile Include="Model\Items\FirstProduct.cs" />
     <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\Vats\Vat23.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\Deliveries\" />
-    <Folder Include="Model\Discounts\" />
-    <Folder Include="Model\Items\" />
-    <Folder Include="Model\Vats\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
