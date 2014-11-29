@@ -48,7 +48,7 @@ namespace Orders
 
 		override public double Calculate(double price)
 		{
-			return price;
+			return this.discount;
 		}
 	}
 
@@ -67,21 +67,49 @@ namespace Orders
 
 	public class OrderItem
 	{
+		public Product product { get; set; }
 		public OrderItem(Product product, ADiscount[] discounts = null)
 		{
+			this.product = product;
 			if (discounts != null)
 			{
 				foreach (ADiscount discount in discounts)
 				{
-					Console.WriteLine (product.netto_price);
-					product.netto_price -= discount.Calculate(product.netto_price);
-					Console.WriteLine (product.netto_price);
-					Console.WriteLine ();
+					this.product.netto_price -= discount.Calculate(this.product.netto_price);
+				}
+			}
+		}
+	}
+
+	public class Order
+	{
+		List<OrderItem> items = new List<OrderItem> ();
+		List<ADiscount> discounts = new List<ADiscount> ();
+		public double total { get; set; }
+
+		public Order(ADiscount[] discounts = null)
+		{
+			if (discounts != null)
+			{
+				foreach(ADiscount discount in discounts)
+				{
+					this.discounts.Add (discount);
 				}
 			}
 		}
 
+		public void Add(OrderItem item)
+		{
+			this.items.Add (item);
+		}
 
+		public void CalculateTotal()
+		{
+			foreach (var item in this.items)
+			{
+				this.total += item.product.netto_price;
+			}
+		}
 	}
 
 	public class MainClass
@@ -93,11 +121,10 @@ namespace Orders
 			products.Add (new Product ("test2", 40, 0.8));
 			products.Add (new Product ("test3", 29.95, 0.8));
 
-			var oi = new OrderItem (products[1], new ADiscount[] { new PercentageDiscount(0.05), new FixedDiscount(10) });
-
-			//var order = new Order ();
-			//order.AddItem (new OrderItem(products[1]));
-
+			var order = new Order ();
+			order.Add (new OrderItem (products[0], new ADiscount[] { new PercentageDiscount(0.05), new FixedDiscount(10) }));
+			order.CalculateTotal();
+			Console.WriteLine (order.total);
 			//orderotem(produkt, *rabat)
 			//order(orderitems, *rabat)
 		}
