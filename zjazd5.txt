@@ -1,0 +1,4 @@
+Obliczanie wartosci zamownia
+Dodawanie rabatu
+Dodawanie kosztow dostaw
+Zmiana stawek VAT
