@@ -55,9 +55,9 @@
     <Compile Include="ProstokatTesty.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleApp\ConsoleApp.csproj">
+    <ProjectReference Include="..\ConsoleApp\LiskovConsoleApp.csproj">
       <Project>{2dd08776-20b0-4b0c-8fc7-0948b6655d5b}</Project>
-      <Name>ConsoleApp</Name>
+      <Name>LiskovConsoleApp</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
