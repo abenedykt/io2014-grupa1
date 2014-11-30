@@ -75,6 +75,34 @@ namespace Orders
 		abstract public double Calculate (Product product);
 	}
 
+	public abstract class ATotalDiscount
+	{
+		public double discount { get; set; }
+		public double thresold { get; set; }
+		public ATotalDiscount(double discount)
+		{
+			this.discount = discount;
+		}
+
+		abstract public double Calculate (double total);
+	}
+
+	public class TotalFixedDiscountForAboveThresold : ATotalDiscount
+	{
+		public TotalFixedDiscountForAboveThresold(double discount, double thresold) : base(discount)
+		{
+			this.thresold = thresold;
+		}
+
+		override public double Calculate(double total)
+		{
+			if(total > this.thresold)
+				return this.discount;
+
+			return 0;
+		}
+	}
+
 	public class FixedDiscount : ADiscount
 	{
 		public FixedDiscount(double discount) : base(discount) { }
@@ -172,12 +200,17 @@ namespace Orders
 	{
 		List<OrderItem> items = new List<OrderItem> ();
 		ADiscount[] discounts;
+		ATotalDiscount[] total_discounts;
 		public double total { get; set; }
+		public double base_total { get; set; }
 
-		public Order(ADiscount[] discounts = null)
+		public Order(ADiscount[] discounts = null, ATotalDiscount[] total_discounts = null)
 		{
 			if (discounts != null)
 				this.discounts = discounts;
+
+			if (total_discounts != null)
+				this.total_discounts = total_discounts;
 		}
 
 		public void Add(OrderItem item)
@@ -194,6 +227,14 @@ namespace Orders
 					foreach (var discount in this.discounts)
 						item.product.netto_price -= discount.Calculate (item.product);
 				}
+				this.total += item.product.price;
+			}
+			this.base_total = this.total;
+
+			if (this.total_discounts != null)
+			{
+				foreach (var discount in this.total_discounts)
+					this.total -= discount.Calculate (this.total);
 			}
 		}
 
@@ -221,6 +262,10 @@ namespace Orders
 				}
 				tmp += "\n";
 			}
+			tmp += String.Format("Do zapłaty: {0:c}\n", this.total);
+
+			if(this.total < this.base_total)
+				tmp += String.Format("Przed rabatem całości zamówienia: {0:c}; rabat {1:c}\n", this.base_total, this.base_total - this.total);
 
 			return tmp;
 		}
@@ -262,7 +307,7 @@ namespace Orders
 			products.Add (new Product ("Gitara", 1200, 0.08, guitar_details));
 
 			//obiekt zamówienia z konstruktowem zawierającym tablice ze zniżkami globalnymi (sparametryzowanymi)
-			var order = new Order (new ADiscount[] { new FixedDiscount(20), new ClothesPercentageDiscount(0.01), new QuantityUnder10FixedDiscount(5), new YamahaManufacturerPercentageDiscount(0.1) });
+			var order = new Order (new ADiscount[] { new FixedDiscount(20), new ClothesPercentageDiscount(0.01), new QuantityUnder10FixedDiscount(5), new YamahaManufacturerPercentageDiscount(0.1) }, new ATotalDiscount[] { new TotalFixedDiscountForAboveThresold(100, 1100) });
 			//dodawanie produktów, mogą zawierać tablice zniżek
 			order.Add (new OrderItem (products[0], new ADiscount[] { new PercentageDiscount(0.05), new FixedDiscount(10) }));
 			order.Add (new OrderItem (products[1]));
