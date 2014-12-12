@@ -1,8 +1,11 @@
-﻿namespace ZamówieniaRabaty.Contract
+﻿using System.Collections.Generic;
+
+namespace ZamówieniaRabaty.Contract
 {
     public interface IDiscount
     {
         string Name { get; set; }
-        int Percent { get; set; }
+
+        void Calculate(IEnumerable<IItem> items);
     }
 }

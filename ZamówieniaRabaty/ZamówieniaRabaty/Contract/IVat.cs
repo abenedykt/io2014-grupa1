@@ -2,6 +2,6 @@
 {
     public interface IVat
     {
-        int Percent { get; set; }
+        int Percent { get; }
     }
 }

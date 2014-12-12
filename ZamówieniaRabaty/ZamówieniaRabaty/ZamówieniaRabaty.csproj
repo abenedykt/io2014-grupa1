@@ -41,14 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Factory.cs" />
     <Compile Include="Contract\IDelivery.cs" />
     <Compile Include="Contract\IDiscount.cs" />
     <Compile Include="Contract\IItem.cs" />
     <Compile Include="Contract\IOrder.cs" />
     <Compile Include="Contract\IVat.cs" />
     <Compile Include="Model\Deliveries\DPDDelivery.cs" />
-    <Compile Include="Model\Discounts\FirstDiscount.cs" />
-    <Compile Include="Model\Items\FirstProduct.cs" />
+    <Compile Include="Model\Discounts\DiscountMinusTwentyPercent.cs" />
+    <Compile Include="Model\Discounts\SecondItemFree.cs" />
+    <Compile Include="Model\Items\Keyboard.cs" />
+    <Compile Include="Model\Items\Mouse.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\Vats\Vat23.cs" />
     <Compile Include="Program.cs" />

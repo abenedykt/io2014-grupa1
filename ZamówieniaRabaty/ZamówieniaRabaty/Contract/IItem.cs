@@ -2,8 +2,9 @@
 {
     public interface IItem
     {
-        string Description { get; set; }
-        double UnitPrice { get; set; }
+        string Name { get; set; }
+        double Price { get; set; }
+        double PriceAfterDiscount { get; set; }
 
         IVat Vat { get; set; }
     }

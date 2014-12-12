@@ -10,7 +10,6 @@ namespace ZamówieniaRabaty.Model.Vats
             {
                 return 23;
             }
-            private set;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using ZamówieniaRabaty.Common;
 using ZamówieniaRabaty.Contract;
 using ZamówieniaRabaty.Model;
 using ZamówieniaRabaty.Model.Deliveries;
@@ -12,17 +14,23 @@ namespace ZamówieniaRabaty
     {
         static void Main(string[] args)
         {
-            IOrder order = new Order();
+            Factory factory = new Factory();
 
-            order.Items = new List<IItem>()
-            {
-                new FirstProduct() { Description = "Produkt Pierwszy", UnitPrice = 23.90, Vat = new Vat23()}
-            };
-            order.Discounts = new List<IDiscount>()
-            {
-                new FirstDiscount() { Name = "Zniżka pierwsza", Percent = 10 }
-            };
-            order.Delivery = new DPDDelivery() { Cost = 15.00 };
+            IOrder order = factory.GetNewOrder();
+            order.AddItem(factory.GetMouseItem());
+            order.AddItem(factory.GetKeyboardItem());
+                
+            order.AddDelivery(factory.GetDPDDelivery());
+
+            order.AddDiscount(factory.GetDiscountSecondItemFree());
+
+            order.CalculateTotalCost();
+
+            Console.WriteLine("koszt " + order.TotalCost);
+            Console.WriteLine("koszt ostateczny " + order.TotalCostAfterDiscounts);
+
+            Console.WriteLine("koszt bez wysylki " + order.GetTotalCostWithoutDelivery());
+            Console.WriteLine("koszt ostateczny bez wysylki " + order.GetTotalCostAfterDiscountsWithoutDelivery());
         }
     }
 }
