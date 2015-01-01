@@ -6,65 +6,49 @@ using System.Threading.Tasks;
 
 namespace Delivery
 {
-    public interface IProduct
+    public class ReceiptService
     {
-        double Weight { get; set; }
-        double Price { get; set; }
-        string Name { get; set; }
-    }
-
-    public interface IDiscount
-    {
-        Type ProductType { get; set; }
-        double discount { get; set; }
-    }
-
-    public interface ITax
-    {
-        Type ProductType { get; set; }
-        double tax { get; set; }
-    }
-
-
-    public class Order
-    {
-        public List<IProduct> _products { get; private set; }
-
-        public Order()
+        private IList<IOrder> _orders;
+        private IReceiptNode _node;
+        public ReceiptService(IReceiptNode calculateStartNode, IList<IOrder> orders)
         {
-            _products = new List<IProduct>();
+            _orders = orders;
+            _node = calculateStartNode;
         }
 
-        public void AddProduct(IProduct product)
+        public double CaclulateReceipt()
         {
-            _products.Add(product);
-        }
-
-        public bool DeleteProduct(IProduct product)
-        {
-            return true;
+            double sum = 0d;
+            while (_node.HasNext())
+            {
+                sum += _node.Calculate(_orders);
+                if (_node.HasNext()) _node = _node.Next;
+            }
+            return sum;
         }
     }
-
-        
-    public class Delivery 
-    {
-        private IEnumerable<IProduct> _productList;
-
-        public Delivery(IEnumerable<IProduct> products)
-        {
-            _productList = products;
-        }
-        
-    }
-
-
     class Program
     {
         static void Main(string[] args)
         {
+            var book = new Product("Wiedźmin cz1", 80, ProductType.Book);
+            var comicBook = new Product("Batman: Smierc rodziny", 100, ProductType.ComicBook);
+
+            var basket = new Basket();
+            basket.AddProduct(book, 2);
+            basket.AddProduct(comicBook, 3);
+
+            var calcBasket = new CalculateBasketNode();
+            var vat = new VatTax(0.22);
+            var prodTypeDiscount = new ProductTypeDiscount(0.5, ProductType.Book);
+            var basketDiscount = new BasketSumDiscount(0.1, 200);
+            prodTypeDiscount.Next = calcBasket;
+            calcBasket.Next = vat;
+            vat.Next = basketDiscount;
+
+            var recipeService = new ReceiptService(prodTypeDiscount, basket.GetOrders());
+            var cost = recipeService.CaclulateReceipt();
+            Console.WriteLine("Your recipe cost: {0}", cost);
         }
     }
-
-    
 }
