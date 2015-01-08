@@ -9,9 +9,9 @@ namespace ZamówieniaRabaty.Model
         public double TotalCost { get; set; }
         public double TotalCostAfterDiscounts { get; set; }
 
-        List<IItem> items;
-        List<IDiscount> discounts;
-        IDelivery delivery;
+        private List<IItem> items;
+        private List<IDiscount> discounts;
+        private IDelivery delivery;
 
         public Order(List<IItem> items, List<IDiscount> discounts)
         {
