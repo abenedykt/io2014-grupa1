@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rabaty.Contract
+namespace Rabaty.Abstract
 {
-    interface IOrderDecorator : IOrder
+    abstract class AbstractOrderWithDiscount : AbstractOrder
     {
-        IOrder Order { get; set; }
+        public abstract double Discount { get; }
     }
 }

@@ -1,6 +1,6 @@
-﻿using Rabaty.Contract;
-using Rabaty.Model;
-using Rabaty.Model.Discounts;
+﻿using Rabaty.Abstract;
+using Rabaty.Discounts;
+using Rabaty.Factory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,19 +13,13 @@ namespace Rabaty
     {
         static void Main(string[] args)
         {
-            var order = new Order(29.99, 3, 23);
+            AbstractOrder order = new BaseOrder(19.99f);
 
-            var orderSummerSale = new SummerDiscountDecorator(order);
-            var orderBlackFriday = new BlackFridayDiscountDecorator(orderSummerSale);
+            order = DiscountFactory.GetOrderWithDiscount(order, OrderType.BestClient);
 
-            ShowPriceOnConsole(orderBlackFriday);
+            Console.WriteLine(order.TotalAmount);
 
             Console.ReadKey();
-        }
-
-        static void ShowPriceOnConsole(IOrder order)
-        {
-            Console.WriteLine(order.GetPrice());
         }
     }
 }

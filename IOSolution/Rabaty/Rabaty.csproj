@@ -41,12 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contract\IOrder.cs" />
-    <Compile Include="Contract\IOrderDecorator.cs" />
-    <Compile Include="Model\Discounts\BaseDiscount.cs" />
-    <Compile Include="Model\Discounts\BlackFridayDiscountDecorator.cs" />
-    <Compile Include="Model\Discounts\SummerDiscountDecorator.cs" />
-    <Compile Include="Model\Order.cs" />
+    <Compile Include="Abstract\AbstractOrder.cs" />
+    <Compile Include="Abstract\AbstractOrderWithDiscount.cs" />
+    <Compile Include="BaseOrder.cs" />
+    <Compile Include="Discounts\BestClientDiscountOrder.cs" />
+    <Compile Include="Discounts\TwoPercentDiscountOrder.cs" />
+    <Compile Include="Discounts\HalfPriceDiscountOrder.cs" />
+    <Compile Include="Discounts\FivePercentDiscountOrder.cs" />
+    <Compile Include="Factory\DiscountFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
