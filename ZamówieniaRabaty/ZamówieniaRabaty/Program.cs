@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using ZamówieniaRabaty.Common;
 using ZamówieniaRabaty.Contract;
-using ZamówieniaRabaty.Model;
-using ZamówieniaRabaty.Model.Deliveries;
-using ZamówieniaRabaty.Model.Discounts;
-using ZamówieniaRabaty.Model.Items;
-using ZamówieniaRabaty.Model.Vats;
+using ZamówieniaRabaty.Contract.Factories;
+using ZamówieniaRabaty.Factories;
 
 namespace ZamówieniaRabaty
 {
@@ -14,23 +9,30 @@ namespace ZamówieniaRabaty
     {
         static void Main(string[] args)
         {
-            Factory factory = new Factory();
+            IOrderFactory orderFactory = new OrderFactory();
+            IDeliveryFactory deliveryFactory = new DeliveryFactory();
+            IDiscountFactory discountFactory = new DiscountFactory();
+            IVatFactory vatFactory = new VatFactory();
+            IItemFactory itemFactory = new ItemFactory(vatFactory);
 
-            IOrder order = factory.GetNewOrder();
-            order.AddItem(factory.GetMouseItem());
-            order.AddItem(factory.GetKeyboardItem());
-                
-            order.AddDelivery(factory.GetDPDDelivery());
+            //-----------------
 
-            order.AddDiscount(factory.GetDiscountSecondItemFree());
+            IOrder order = orderFactory.GetNewOrder();
+
+            order.AddItem(itemFactory.GetMouseItem());
+            order.AddItem(itemFactory.GetKeyboardItem());
+
+            order.AddDelivery(deliveryFactory.GetDPDDelivery());
+
+            order.AddDiscount(discountFactory.GetDiscountSecondItemFree());
 
             order.CalculateTotalCost();
 
             Console.WriteLine("koszt " + order.TotalCost);
-            Console.WriteLine("koszt ostateczny " + order.TotalCostAfterDiscounts);
+            Console.WriteLine("koszt uwzgledniajacy znizki " + order.TotalCostAfterDiscounts);
 
             Console.WriteLine("koszt bez wysylki " + order.GetTotalCostWithoutDelivery());
-            Console.WriteLine("koszt ostateczny bez wysylki " + order.GetTotalCostAfterDiscountsWithoutDelivery());
+            Console.WriteLine("koszt uwzgledniajacy znizki bez wysylki " + order.GetTotalCostAfterDiscountsWithoutDelivery());
         }
     }
 }
