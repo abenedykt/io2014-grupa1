@@ -7,6 +7,7 @@ namespace ZamówieniaRabaty.Model.Discounts
     public class SecondItemFree: IDiscount
     {
         public string Name { get; set; }
+        public bool Combinable { get; set; }
 
         public void Calculate(IEnumerable<IItem> items)
         {

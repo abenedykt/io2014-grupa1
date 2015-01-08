@@ -10,7 +10,8 @@ namespace ZamówieniaRabaty.Factories
         {
             IDiscount discount = new DiscountMinusTwentyPercent()
             {
-                Name = "Promocja minus 20%"
+                Name = "Promocja minus 20%",
+                Combinable = false
             };
 
             return discount;
@@ -20,7 +21,8 @@ namespace ZamówieniaRabaty.Factories
         {
             IDiscount discount = new SecondItemFree()
             {
-                Name = "Promocja druga, tańsza rzecz gratis"
+                Name = "Promocja druga, tańsza rzecz gratis",
+                Combinable = false
             };
 
             return discount;

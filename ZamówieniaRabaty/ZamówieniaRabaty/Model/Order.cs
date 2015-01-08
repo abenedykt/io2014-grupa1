@@ -28,7 +28,14 @@ namespace ZamówieniaRabaty.Model
 
         public void AddDiscount(IDiscount discount)
         {
-            this.discounts.Add(discount);
+            if(this.discounts.Exists(x => x.Combinable == false))
+            {
+                System.Console.WriteLine("Promocje nie lacza sie ze soba! Nowa promocja nie zostala dodana.");
+            }
+            else
+            {
+                this.discounts.Add(discount);
+            }
         }
 
         public void AddDelivery(IDelivery delivery)

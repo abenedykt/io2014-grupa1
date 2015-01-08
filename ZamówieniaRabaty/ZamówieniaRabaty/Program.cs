@@ -24,15 +24,16 @@ namespace ZamówieniaRabaty
 
             order.AddDelivery(deliveryFactory.GetDPDDelivery());
 
+            order.AddDiscount(discountFactory.GetDiscountMinusTwentyPercent());
             order.AddDiscount(discountFactory.GetDiscountSecondItemFree());
 
             order.CalculateTotalCost();
 
-            Console.WriteLine("koszt " + order.TotalCost);
-            Console.WriteLine("koszt uwzgledniajacy znizki " + order.TotalCostAfterDiscounts);
-
             Console.WriteLine("koszt bez wysylki " + order.GetTotalCostWithoutDelivery());
+            Console.WriteLine("koszt z wysylka: " + order.TotalCost);
+            
             Console.WriteLine("koszt uwzgledniajacy znizki bez wysylki " + order.GetTotalCostAfterDiscountsWithoutDelivery());
+            Console.WriteLine("koszt uwzgledniajacy znizki " + order.TotalCostAfterDiscounts);
         }
     }
 }
