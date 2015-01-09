@@ -24,8 +24,8 @@ namespace ZamówieniaRabaty
 
             order.AddDelivery(deliveryFactory.GetDPDDelivery());
 
-            order.AddDiscount(discountFactory.GetDiscountMinusTwentyPercent());
             order.AddDiscount(discountFactory.GetDiscountSecondItemFree());
+            order.AddDiscount(discountFactory.GetDiscountMinusTwentyPercent());
 
             order.CalculateTotalCost();
 

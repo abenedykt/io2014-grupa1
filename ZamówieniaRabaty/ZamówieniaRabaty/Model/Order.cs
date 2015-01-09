@@ -28,7 +28,7 @@ namespace ZamówieniaRabaty.Model
 
         public void AddDiscount(IDiscount discount)
         {
-            if(this.discounts.Exists(x => x.Combinable == false))
+            if (discount.Combinable == false && this.discounts.Any())
             {
                 System.Console.WriteLine("Promocje nie lacza sie ze soba! Nowa promocja nie zostala dodana.");
             }
