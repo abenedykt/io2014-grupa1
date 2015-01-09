@@ -1,5 +1,4 @@
-﻿using Rabaty.Abstract;
-using Rabaty.Discounts;
+﻿using Rabaty.Contract;
 using Rabaty.Factory;
 using System;
 using System.Collections.Generic;
@@ -13,12 +12,16 @@ namespace Rabaty
     {
         static void Main(string[] args)
         {
-            AbstractOrder order = new BaseOrder(19.99f);
+            IOrder order = OrderFactory.GetEmptyOrder();
+            IItemRepository repository = ItemRepositoryFactory.GetItemRepository();
 
-            order = DiscountFactory.GetOrderWithDiscount(order, OrderType.BestClient);
+            order.AddItem(repository.GetItemById("00001"), 4);
+            order.AddItem(repository.GetItemById("00003"), 1);
+            order.AddItem(repository.GetItemById("00005"), 3);
+            order.AddItem(repository.GetItemById("00002"), 1);
+            order.AddItem(repository.GetItemById("00002"), 1);
 
-            Console.WriteLine(order.TotalAmount);
-
+            Console.WriteLine();
             Console.ReadKey();
         }
     }
