@@ -1,5 +1,7 @@
 ﻿using Rabaty.Contract;
 using Rabaty.Factory;
+using Rabaty.Model;
+using Rabaty.Model.Decorators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,7 @@ namespace Rabaty
         {
             IOrder order = OrderFactory.GetEmptyOrder();
             IItemRepository repository = ItemRepositoryFactory.GetItemRepository();
+            IPriceCalculator calculator = PriceCalculatorFactory.GetPriceCalculator();
 
             order.AddItem(repository.GetItemById("00001"), 4);
             order.AddItem(repository.GetItemById("00003"), 1);
@@ -21,7 +24,11 @@ namespace Rabaty
             order.AddItem(repository.GetItemById("00002"), 1);
             order.AddItem(repository.GetItemById("00002"), 1);
 
-            Console.WriteLine();
+            order = OrderWithDiscountFactory.GetOrderWithDiscount(order);
+
+            double total = calculator.CalcOrderPrice(order);
+
+            Console.WriteLine(total);
             Console.ReadKey();
         }
     }

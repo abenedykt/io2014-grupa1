@@ -42,9 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contract\IOrder.cs" />
+    <Compile Include="Contract\IOrderDiscountDecorator.cs" />
+    <Compile Include="Factory\OrderWithDiscountFactory.cs" />
+    <Compile Include="Factory\PriceCalculatorFactory.cs" />
     <Compile Include="Model\BaseOrder.cs" />
     <Compile Include="Factory\ItemRepositoryFactory.cs" />
+    <Compile Include="Model\Decorators\FirstItemFreeDiscountOrder.cs" />
+    <Compile Include="Contract\IPriceCalculator.cs" />
     <Compile Include="Model\OrderItem.cs" />
+    <Compile Include="Model\PriceCalculator.cs" />
     <Compile Include="Repository\IItemRepository.cs" />
     <Compile Include="Contract\ItemRepository.cs" />
     <Compile Include="Factory\OrderFactory.cs" />

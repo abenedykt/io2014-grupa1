@@ -11,6 +11,11 @@ namespace Rabaty.Model
     {
         public List<OrderItem> OrderItems { get; set; }
 
+        public BaseOrder()
+        {
+            this.OrderItems = new List<OrderItem>();
+        }
+
         public void AddItem(Item item, int quantity = 1)
         {
             this.OrderItems.Add(new OrderItem(item, quantity));
