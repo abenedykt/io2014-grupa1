@@ -10,9 +10,14 @@ namespace Rabaty.Factory
 {
     public class OrderWithDiscountFactory
     {
-        public static IOrder GetOrderWithDiscount(IOrder order)
+        public static IOrder GetFirstItemFreeOrderDisc(IOrder order)
         {
             return new FirstItemFreeDiscountOrder(order);
+        }
+
+        public static IOrder GetHalfPriceOrderDisc(IOrder order)
+        {
+            return new HalfPriceDiscountOrder(order);
         }
     }
 }

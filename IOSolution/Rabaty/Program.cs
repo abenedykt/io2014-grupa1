@@ -24,7 +24,8 @@ namespace Rabaty
             order.AddItem(repository.GetItemById("00002"), 1);
             order.AddItem(repository.GetItemById("00002"), 1);
 
-            order = OrderWithDiscountFactory.GetOrderWithDiscount(order);
+            order = OrderWithDiscountFactory.GetFirstItemFreeOrderDisc(order);
+            order = OrderWithDiscountFactory.GetHalfPriceOrderDisc(order);
 
             double total = calculator.CalcOrderPrice(order);
 
