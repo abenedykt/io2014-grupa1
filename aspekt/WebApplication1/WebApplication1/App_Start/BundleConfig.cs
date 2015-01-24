@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using Castle.DynamicProxy;
+using System.Web;
 using System.Web.Optimization;
 
 namespace WebApplication1
@@ -26,6 +27,7 @@ namespace WebApplication1
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
         }
     }
 }

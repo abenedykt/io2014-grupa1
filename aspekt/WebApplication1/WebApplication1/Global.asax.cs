@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Castle.DynamicProxy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,11 @@ namespace WebApplication1
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            builder.Register(c => new WebApplication1.Controllers.HomeController.CallLogger(Console.Out))
+            .Named<IInterceptor>("log-calls");
+
+            // Typed registration
+            builder.Register(c => new WebApplication1.Controllers.HomeController.CallLogger(Console.Out));
         }
     }
 }
