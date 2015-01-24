@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiskovConsoleApp.Test", "..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabaty", "Rabaty\Rabaty.csproj", "{6838FF4D-9F67-4DCD-8DAF-CA0093EDFD19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspectMVCApp", "AspectMVCApp\AspectMVCApp.csproj", "{D2B8BEBA-B467-4678-945C-F70511B61CCA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6838FF4D-9F67-4DCD-8DAF-CA0093EDFD19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6838FF4D-9F67-4DCD-8DAF-CA0093EDFD19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6838FF4D-9F67-4DCD-8DAF-CA0093EDFD19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2B8BEBA-B467-4678-945C-F70511B61CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2B8BEBA-B467-4678-945C-F70511B61CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2B8BEBA-B467-4678-945C-F70511B61CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2B8BEBA-B467-4678-945C-F70511B61CCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

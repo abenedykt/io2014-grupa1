@@ -26,7 +26,7 @@ namespace Rabaty
 
             order = OrderWithDiscountFactory.GetFirstItemFreeOrderDisc(order);
             order = OrderWithDiscountFactory.GetHalfPriceOrderDisc(order);
-
+            
             double total = calculator.CalcOrderPrice(order);
 
             Console.WriteLine(total);
