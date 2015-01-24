@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aspekty.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,11 @@ namespace Aspekty.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            IndexViewModel viewModel = new IndexViewModel();
+
+            viewModel.Prop = (DateTime.Now.Second + DateTime.Now.Millisecond).ToString();
+
+            return View(viewModel);
         }
 
         public ActionResult About()
