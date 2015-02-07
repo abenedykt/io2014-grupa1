@@ -1,0 +1,6 @@
+W kilku zdaniach opisz diagram. 
+
+Jakie znaczenie maj¹ poszczególne rogi.
+
+Jakie biblioteki powinny siê znaleŸæ w lewym górnym a jakie w lewym dolnym rogo. 
+
