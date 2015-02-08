@@ -12,21 +12,20 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac.Extras.DynamicProxy2;
+using System.Diagnostics;
 
 namespace Interceptors
 {
     public class ExecutionTime : IInterceptor
     {
-        TextWriter _output;
 
-        public ExecutionTime(TextWriter output)
-        {
-            _output = output;
-        }
 
         public void Intercept(IInvocation invocation)
         {
-            _output.WriteLine("sadsada");
+            var start = DateTime.UtcNow;
+            invocation.Proceed();
+            var stop = DateTime.UtcNow;
+            Debug.WriteLine("Metode wykonano w {0} ms.",(start-stop).TotalMilliseconds);
         }
     }
 
@@ -40,9 +39,9 @@ namespace Interceptors
             var builder = new ContainerBuilder();
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
-            builder.RegisterType<InterceptorsController>()
-                .As < IInterceptorsController>()
-               .EnableInterfaceInterceptors();
+            builder.Register(c => new ExecutionTime());
+            builder.RegisterType<InterceptorsController>().EnableClassInterceptors();
+
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
