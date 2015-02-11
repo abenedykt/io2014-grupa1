@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sklep
 {
-    class Program
+    class MenuStart
     {
 
         #region MenuGlowne
@@ -16,7 +16,7 @@ namespace Sklep
         {
             Console.BackgroundColor = ConsoleColor.DarkYellow;
             
-            Koszyk kosz = new Koszyk(); //tworzenie kosza zakupow
+            ViewKoszyk kosz = new ViewKoszyk(); //tworzenie kosza zakupow
             RabatKosza rabatKosza = new RabatKosza(0, 0);
             
             ConsoleKeyInfo klawisz;
@@ -57,7 +57,7 @@ namespace Sklep
         #endregion
 
         #region Usuwanie z koszyka
-        public static void Usuwanie(Koszyk kosz)
+        public static void Usuwanie(ViewKoszyk kosz)
         {
             Console.Clear();
             Console.WriteLine("Liczba przedmiotow w koszyku to: {0}", kosz.DisplayIlosc());
@@ -70,7 +70,7 @@ namespace Sklep
 
         #endregion 
 
-        public static void Dodawanie(Koszyk koszykklienta, RabatKosza RabatKoszyka)
+        public static void Dodawanie(ViewKoszyk koszykklienta, RabatKosza RabatKoszyka)
         {
             ConsoleKeyInfo DodacDoKosza;
             ConsoleKeyInfo czyRabat;
@@ -123,7 +123,7 @@ namespace Sklep
                         Console.ReadLine();
                         continue;
                     }
-                    Console.WriteLine("Podaj stawke VAT produktu");
+                    Console.WriteLine("Podaj stawke VAT produktu, w procentach");
                     try
                     {
                         vat = int.Parse(Console.ReadLine());
@@ -205,45 +205,42 @@ namespace Sklep
             do
             {
                 Console.Clear();
-                Console.WriteLine("Czy chcesz dodac rabat na caly kosz ? [T/N]");
+                Console.WriteLine("Czy chcesz dodac rabat na caly koszyk ? [Tak/Nie]");
                 czyRabat = Console.ReadKey();
 
                 bool jest = false;
                 if (czyRabat.Key == ConsoleKey.T)
                 {
-                    Console.Clear();
                     if (koszykklienta.koszyk.Count == 0)
                     {
                         Console.WriteLine("Koszyk jest pusty, nie mozna dodac rabatu, powrot do menu. ");
                         Console.ReadLine();
-                        Console.Clear();
                         break;
                     }
 
-                    Console.Write("Wprowadz rabat(2): ");
+                    Console.Write("Wprowadz rabat ");
                     try
                     {
                         RabatKoszyka.procent = int.Parse(Console.ReadLine());
                         if (RabatKoszyka.procent.ToString().Length > 2)
                         {
                             Console.WriteLine("Wprowadziles zbyt wysoki rabat, powrot do menu");
+                            Console.WriteLine("Rabat nie moze byc wiekszy niz 99 %");
                             Console.ReadLine();
-                            Console.Clear();
                             continue;
                         }
                         if (RabatKoszyka.procent < 0)
                         {
                             Console.WriteLine("Rabat nie moze byc ujemny, powrot do menu");
                             Console.ReadLine();
-                            Console.Clear();
                             continue;
                         }
                     }
                     catch (FormatException)
                     {
-                        Console.WriteLine("Wprowadziles niepoprawny rabat, wracamy do menu");
+                        Console.WriteLine("Wprowadziles niepoprawny rabat");
+                        Console.WriteLine("powrot do menu");
                         Console.ReadLine();
-                        Console.Clear();
                         continue;
                     }
                     jest = true;
